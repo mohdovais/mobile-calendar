@@ -1,0 +1,14 @@
+.years-selector .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.years-selector .wrapper button{
+    width: 25%;
+    font-size: 1em;
+}
+
+.years-selector .wrapper button.current{
+    background-color: tomato;
+    color: white;
+}

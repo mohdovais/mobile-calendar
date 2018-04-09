@@ -1,0 +1,12 @@
+.calendar {
+    max-width: 764px;
+    margin: 0 auto;
+}
+
+.calendar .nav {
+    color: tomato;
+    background: none;
+    background-color: transparent;
+    border: none;
+    padding: 1em;
+}

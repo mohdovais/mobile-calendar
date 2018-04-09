@@ -1,0 +1,48 @@
+.calendar .calendar-day {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 1em;
+    margin: 0;
+    font-size: 1em;
+    overflow: hidden;
+}
+
+.calendar .calendar-month.date-selected .calendar-day {
+    padding: 0.5em;
+}
+
+
+.calendar .calendar-month:not(.date-selected) .calendar-day:enabled {
+    border-top: 1px solid grey;
+}
+
+.calendar-month header span.Saturday,
+.calendar-month header span.Sunday,
+.calendar .calendar-day.Saturday,
+.calendar .calendar-day.Sunday {
+    color: #999;
+}
+
+.calendar .calendar-day.today .day-number{
+    background-color: tomato;
+    padding: 0.25em 0.5em;
+    color: white;
+    border-radius: 0.25em;
+}
+
+.calendar .calendar-day.selected .day-number{
+    background-color: black;
+    padding: 0.25em 0.5em;
+    color: white;
+    border-radius: 0.25em;
+}
+
+.calendar .calendar-day .badge {
+    display: block;
+    padding: 0.25em;
+    background-color: tomato;
+    color: white;
+    font-size: 0.5em;
+    border-radius: 0.5em;
+}

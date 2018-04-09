@@ -1,0 +1,11 @@
+.calendar-year > div {
+    display: flex;
+}
+
+.calendar-year button {
+    flex: 1;
+    padding: 2em;
+    font-size: 1em;;
+    background: none;
+    border: none;
+}

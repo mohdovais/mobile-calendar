@@ -1,0 +1,25 @@
+.calendar-month h4{
+    font-weight: 100;
+    font-size: 2em;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.calendar-month h5{
+    font-weight: 100;
+    font-size: 1em;
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 2em;
+    background-color: rgb(248, 248, 248);
+    border-bottom: 1px solid rgb(178, 178, 178);
+}
+
+.calendar-month.current h4{
+    color: tomato;
+}
+
+.calendar-month .week {
+  display: flex;
+}
+
