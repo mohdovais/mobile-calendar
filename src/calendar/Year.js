@@ -11,8 +11,8 @@ export default class extends Component {
         const today = getToday();
         const getBtutton = this.buttonCurry(
             year,
-            today.getMonth(),
-            today.getFullYear()
+            today.getFullYear(),
+            today.getMonth()
         );
 
         return (
@@ -42,7 +42,7 @@ export default class extends Component {
         );
     }
 
-    buttonCurry(year, currentMonth, currentYear) {
+    buttonCurry(year, currentYear, currentMonth) {
         return month => {
             return this.getButton(
                 month,
@@ -69,7 +69,7 @@ export default class extends Component {
     }
 
     onSelect(event) {
-        const button = event.currentTarget;
+        const button = event.target;
         const props = this.props;
         if (props.onSelect) {
             props.onSelect(

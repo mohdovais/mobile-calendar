@@ -4,23 +4,13 @@ import Year from "./Year";
 import Years from "./Years";
 
 export default class extends Component {
-    constructor(props){
-        super(props);
-        const store = props.store;
-
-        this.unsubscribe = store.subscribe(() => {
-            this.setState(() => {
-                return store.getState();
-            })
-        });
-    }
 
     render() {
-        const state = this.props.store.getState();
-        const year = parseInt(state.year, 10);
-        const month = parseInt(state.month, 10);
+        const props = this.props;
+        const year = parseInt(props.year, 10);
+        const month = parseInt(props.month, 10);
 
-        switch (state.viewType) {
+        switch (props.viewType) {
             case "year":
                 return (
                     <Year
@@ -42,20 +32,16 @@ export default class extends Component {
     }
 
     onYearSelect(year) {
-        this.setState((prevState, props) => {
-            return Object.assign({}, prevState, {
-                viewType: "year",
-                year: parseInt(year, 10)
-            });
-        });
+        this.onSelect(null, parseInt(year, 10))
     }
 
     onMonthSelect(month) {
-        this.setState((prevState, props) => {
-            return Object.assign({}, prevState, {
-                viewType: "month",
-                month: parseInt(month, 10)
-            });
-        });
+        this.onSelect(parseInt(month, 10), this.props.year)
+    }
+
+    onSelect(month, year){
+        if(typeof this.props.onSelect === 'function'){
+            this.props.onSelect(month, year);
+        }
     }
 }

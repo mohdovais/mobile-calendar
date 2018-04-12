@@ -1,50 +1,39 @@
 import React, { Component } from "react";
-import { createStore } from "redux";
-import reducer from './reducer/main';
-import {changeFromView} from './reducer/action-creator';
-import NavButton from "./NavButton";
 import CalendarView from "./CalendarView";
 import "./Calendar.css";
 
 export default class extends Component {
-    constructor(props) {
-        super(props);
-        const now = new Date();
-        this.state = Object.assign(
-            {},
-            {
-                viewType: "month",
-                month: now.getMonth(),
-                year: now.getFullYear()
-            },
-            props
-        );
+  constructor(props) {
+    super(props);
+    this.state = Object.assign({}, {
+        backButtonLabel: 'aaaa'
+    }, props);
+  }
 
-        const store = createStore(reducer, this.state);
-        this.unsubscribe = store.subscribe(() => {
-            this.setState((a, b) => {
-                return store.getState();
-            })
-        });
-        this.store = store;
-    }
+  shouldComponentUpdate(props, state) {
+    console.log(props, state);
+    return true;
+  }
 
-    render() {
-        const { month, year, viewType } = this.state;
-        return (
-            <div className="calendar">
-                <NavButton
-                    viewType={viewType}
-                    month={month}
-                    year={year}
-                    onClick={this.onNavButtonClick.bind(this)}
-                />
-                <CalendarView store={this.store} />
-            </div>
-        );
-    }
+  render() {
+    const now = new Date();
+    const year = this.props.year || now.getFullYear();
+    const month = this.props.month || now.getMonth();
+    return (
+      <div className="calendar">
+        <button
+          className="nav"
+          type="button"
+          onClick={this.onBackButtonClick.bind(this)}
+        >
+          &lt; {this.state.backButtonLabel}
+        </button>
+        <CalendarView year={year} month={month} />
+      </div>
+    );
+  }
 
-    onNavButtonClick(event) {
-        this.store.dispatch(changeFromView(this.state.viewType));
-    }
+  onBackButtonClick(event) {
+    //this.store.dispatch(changeFromView(this.state.viewType));
+  }
 }

@@ -4,16 +4,19 @@ function changeFrom(prevState, lastView){
     switch (lastView) {
         case "month":
             return Object.assign({}, prevState, {
-                viewType: "year"
+                viewType: "year",
+                navButtonLabel: "Select Year"
             });
         case "year":
             return Object.assign({}, prevState, {
-                viewType: "years"
+                viewType: "years",
+                navButtonLabel: "Today"
             });
         default:
             let now = new Date();
             return Object.assign({}, prevState, {
                 viewType: "month",
+                navButtonLabel: prevState.year,            
                 month: now.getMonth(),
                 year: now.getFullYear()
             });
